@@ -22,7 +22,7 @@ int Max(int a,int b) {
 //获取树高
 int GetHeight (AVLTree A) {
     if(A==NULL)return 0;
-    return A->Height;
+    return A->Height；
 }
 
 
