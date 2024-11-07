@@ -163,7 +163,7 @@ AVLTree Delete(AVLTree T,ElymentType Val) {
             delete T;
             return tmp;
         }
-        //双节点
+        //双结点
         else {
             AVLNode* tmp = T->Right;
             while(tmp->Left!=nullptr) {
