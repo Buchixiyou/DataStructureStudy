@@ -6,7 +6,6 @@
 
 //链表线性表
 #define  ElymentType int
-
 typedef struct Lnode* List;
 struct Lnode {
     ElymentType data;

@@ -14,6 +14,7 @@ struct SNode {
     int Maxsize;
 };
 
+//创建堆栈
 Stack CreatStack(int Maxsize) {
     Stack S = (Stack)malloc(sizeof(struct SNode));
     S->Data = (ElymentType*)malloc(Maxsize * sizeof(ElymentType));
@@ -22,11 +23,13 @@ Stack CreatStack(int Maxsize) {
     return S;
 }
 
+//判满
 bool isFull(Stack S) {
 
     return(S->top == S->Maxsize - 1);
 }
 
+//入队
 bool Push(Stack S, ElymentType X) {
     if (isFull(S))return false;
     else {
@@ -35,10 +38,12 @@ bool Push(Stack S, ElymentType X) {
     }
 }
 
+//判空
 bool isEmpty(Stack S) {
     return (S->top == -1);
 }
 
+//出队
 ElymentType Pop(Stack S) {
     if (isEmpty(S)) return 0;
     else {

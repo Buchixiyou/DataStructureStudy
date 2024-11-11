@@ -13,7 +13,7 @@ bool addQ(Queue Q, ElymentType item); //队尾入队
 bool isempty(Queue Q); //判空
 ElymentType Delete(Queue Q); //队首出队
 
-
+//队列结构体
 struct QNode {
     ElymentType* Data;
     Position front,rear;
