@@ -28,6 +28,7 @@ struct GNode {
     DataType Data[MaxVertexNum]; //存顶点的数据
 };
 
+
 typedef PtrToGNode MGraph;
 
 

@@ -16,6 +16,7 @@ struct ENode {
 };
 typedef PtrToENode Edge;
 
+
 //邻接点的定义
 typedef struct AdjVNode *PtrToAdjVNode;
 struct AdjVNode {
