@@ -8,6 +8,7 @@ typedef int Vertex; //顶点下标
 typedef int WeightType; //边的权值
 typedef char DataType; //顶点的数据类型
 
+
 //边的定义
 typedef struct ENode *PtrToENode;
 struct ENode {

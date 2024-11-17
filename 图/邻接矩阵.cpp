@@ -19,6 +19,7 @@ struct ENode {
 };
 typedef PtrToENode Edge;
 
+
 //图的定义
 typedef struct GNode *PtrToGNode;
 struct GNode {
