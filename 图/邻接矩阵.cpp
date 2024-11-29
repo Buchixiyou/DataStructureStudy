@@ -130,14 +130,14 @@ MGraph BuildGraph() {
 bool visited[MaxVertexNum];
 void BFS(MGraph Graph,int i) {
     visited[i]=true;
-    Queue Q = CreatQueue(MaxVertexNum);
+    Queue Q = CreatQueue(MaxVertexNum); //建队列
     addQ(Q,i);
     while(!isEmpty(Q)) {
         int v = Delete(Q);
-        for(int w = 0; w<Graph->Nv;w++) {
+        for(int w = 0; w<Graph->Nv;w++) { //检测v的所有邻接点
             if(visited[w]==false&&Graph->G[v][w]) {
-                visited[w]=true;
-                addQ(Q,w);
+                visited[w]=true; //访问标记
+                addQ(Q,w); //入队
             }
         }
     }

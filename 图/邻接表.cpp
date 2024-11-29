@@ -154,7 +154,8 @@ LGraph BuildGraph() {
 }
 
 //邻接表实现BFS
-bool visited[MaxVertexNum];
+bool visited[MaxVertexNum]
+
 void BFS(LGraph Graph,int i) {
     PtrToAdjVNode p;
     visited[i]= true; //记录访问过的结点i
@@ -162,10 +163,11 @@ void BFS(LGraph Graph,int i) {
     addQ(Q,i); //入队
     while(!isEmpty(Q)) {
         Delete(Q); //队首元素出队
+        //检测所有邻接点
         for(p = Graph->G[i].FirstEdge;p;p=p->Next) {
             int w = p->AdjV; //邻接点的下标
             if(!visited[w]) {
-                visited[w]=true;
+                visited[w]=true; //访问标记
                 addQ(Q,w); //顶点w入队
             }
         }
