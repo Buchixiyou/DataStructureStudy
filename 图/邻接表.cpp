@@ -4,9 +4,62 @@
 
 #include "DataStructure.h"
 #define MaxVertexNum 1000
+#define ElymentType int
+#define Position int
 typedef int Vertex; //顶点下标
 typedef int WeightType; //边的权值
 typedef char DataType; //顶点的数据类型
+typedef struct QNode* Queue;
+
+Queue CreatQueue(int Maxsize); //生成长度的为MaxSize的队列
+bool isFull(Queue Q, int Maxsize); //判断队列是否满
+bool addQ(Queue Q, ElymentType item); //队尾入队
+bool isempty(Queue Q); //判空
+ElymentType Delete(Queue Q); //队首出队
+
+//队列结构体
+struct QNode {
+    ElymentType* Data;
+    Position front,rear;
+    int Maxsize;
+};
+
+
+
+Queue CreatQueue(int Maxsize) {
+    Queue q = (Queue)malloc(sizeof(struct QNode));
+    q->Data = (ElymentType*)malloc(Maxsize * sizeof(ElymentType));
+    q->front = q->rear = 0;
+    q->Maxsize = Maxsize;
+    return q;
+}
+
+bool isFull(Queue q) {
+    return ((q->rear + 1) % q->Maxsize == q->front);
+}
+
+bool isEmpty(Queue q) {
+    return (q->front == q->rear);
+}
+
+bool addQ(Queue q, ElymentType item) {
+    if (isFull(q)) return -1;
+    else {
+        q->rear = (q->rear + 1) % q->Maxsize;
+        q->Data[q->rear] = item;
+        return true;
+    }
+}
+
+
+ElymentType Delete(Queue q) {
+    if (isempty(q)) return -1;
+    else {
+        q->front = (q->front + 1) % q->Maxsize;
+        return q->Data[q->front];
+    }
+}
+
 
 
 //边的定义
@@ -98,4 +151,23 @@ LGraph BuildGraph() {
         std::cin >> Graph->G[V].Data;
 
     return Graph;
+}
+
+//邻接表实现BFS
+bool visited[MaxVertexNum];
+void BFS(LGraph Graph,int i) {
+    PtrToAdjVNode p;
+    visited[i]= true; //记录访问过的结点i
+    Queue Q = CreatQueue(MaxVertexNum);
+    addQ(Q,i); //入队
+    while(!isEmpty(Q)) {
+        Delete(Q); //队首元素出队
+        for(p = Graph->G[i].FirstEdge;p;p=p->Next) {
+            int w = p->AdjV; //邻接点的下标
+            if(!visited[w]) {
+                visited[w]=true;
+                addQ(Q,w); //顶点w入队
+            }
+        }
+    }
 }
